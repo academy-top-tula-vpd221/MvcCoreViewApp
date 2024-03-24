@@ -1,0 +1,76 @@
+﻿@{
+    string title = "My view";
+    string hello = "Hello world";
+    int a = 15;
+    int b = 7;
+    string morning = "Good morning";
+    string day = "Good day";
+    string evening = "Good evening";
+    int hour = DateTime.Now.Hour;
+
+    char sign = '*';
+
+    int[] array = new int[] { 23, 87, 35, 19, 67 };
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>@ViewData["Title"]</title>
+</head>
+    <body>
+        <h1>@ViewBag.Hello</h1>
+        <h2>Date: @DateTime.Now.ToLongDateString()</h2>
+        
+    @if (hour < 12)
+    {
+        <h4>@morning</h4>
+    }
+    else if( hour >= 12 && hour < 18)
+    {
+        <h4>@day</h4>
+    }
+    else
+    {
+        <h4>@evening</h4>
+    }
+
+    @switch(sign)
+    {
+        case '+':
+            <h3>@Sum(@a, @b)</h3>
+            break;
+        case '-':
+            <h3>@(@a - @b)</h3>
+            break;
+        case '*':
+            <h3>@Mult(@a, @b)</h3>
+            break;
+        case '/':
+            <h3>@(@a / @b)</h3>
+            break;
+    }
+
+    @try
+    {
+        
+    }
+    catch(Exception e)
+    {
+
+    }
+
+
+    @for(int i = 0; i < array.Length; i++)
+    {
+        <span>@array[i] </span>
+    }
+
+    @functions
+    {
+        public int Sum(int a, int b) => a + b;
+        public int Mult(int a, int b) => a * b;
+    }
+
+</body>
+</html>
