@@ -6,9 +6,16 @@ namespace MvcCoreViewApp.Controllers
     {
         public IActionResult Index()
         {
+            List<string> items = new List<string>() { "Moscow", "Tula", "Voroneg" };
             ViewData["Title"] = "Home page";
             ViewBag.Hello = "Hello people!";
-            return View();
+
+            ViewData["Cities"] = items;
+            ViewBag.Cities = items;
+
+            var users = new string[] { "Tommy", "Bobby", "Jimmy" };
+            
+            return View(users);
         }
     }
 }
